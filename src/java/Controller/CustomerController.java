@@ -33,6 +33,25 @@ public class CustomerController extends HttpServlet {
                     dao.create(newCustomer);
                     response.sendRedirect("CustomerController?operation=find-all");             
                     break;
+                case "find-by-id":
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    request.setAttribute("customer", dao.findById(id));
+                    RequestDispatcher r = request.getRequestDispatcher("/update_customer.jsp");
+                    r.forward(request, response);  
+                    break;
+                case "update":
+                    id = Integer.parseInt(request.getParameter("id"));
+                    name = request.getParameter("name");
+                    cpf = request.getParameter("cpf");
+                    phone = request.getParameter("phone");
+                    CustomerVO updatedCustomer = new CustomerVO();
+                    updatedCustomer.setId(id);
+                    updatedCustomer.setName(name);
+                    updatedCustomer.setCpf(cpf);
+                    updatedCustomer.setPhone(phone);
+                    dao.update(updatedCustomer);
+                    response.sendRedirect("CustomerController?operation=find-all");
+                    break;
             }
         }
     }
