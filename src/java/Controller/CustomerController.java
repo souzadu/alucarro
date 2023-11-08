@@ -22,6 +22,17 @@ public class CustomerController extends HttpServlet {
                     RequestDispatcher rd = request.getRequestDispatcher("/list_customers.jsp");
                     rd.forward(request, response);
                     break;
+                case "create":
+                    String name = request.getParameter("name");
+                    String cpf = request.getParameter("cpf");
+                    String phone = request.getParameter("phone");                    
+                    CustomerVO newCustomer = new CustomerVO();                    
+                    newCustomer.setName(name);
+                    newCustomer.setCpf(cpf);
+                    newCustomer.setPhone(phone);
+                    dao.create(newCustomer);
+                    response.sendRedirect("CustomerController?operation=find-all");             
+                    break;
             }
         }
     }

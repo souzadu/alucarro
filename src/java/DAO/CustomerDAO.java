@@ -40,4 +40,29 @@ public class CustomerDAO {
         }
     }
     
+    public boolean create(CustomerVO customer) {
+        Connection con = new Database().connect();
+        if (con != null) {
+            try {
+                PreparedStatement ps;
+                String sql = "INSERT INTO customers (name, cpf, phone) VALUES (?, ?, ?)";                
+                ps = con.prepareStatement(sql);
+                ps.setString(1, customer.getName());
+                ps.setString(2, customer.getCpf());
+                ps.setString(3, customer.getPhone());                
+                if (ps.executeUpdate() != 0) {
+                    con.close();
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (SQLException erro) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    
+    
 }
