@@ -52,6 +52,11 @@ public class CustomerController extends HttpServlet {
                     dao.update(updatedCustomer);
                     response.sendRedirect("CustomerController?operation=find-all");
                     break;
+                case "delete": 
+                    id = Integer.parseInt(request.getParameter("id"));
+                    dao.delete(id);
+                    response.sendRedirect("CustomerController?operation=find-all");
+                    break;
             }
         }
     }

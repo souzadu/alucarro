@@ -65,6 +65,27 @@ public class CustomerDAO {
     }
     
     
+    public boolean delete(int id){
+        Connection con = new Database().connect();
+        if (con != null) {
+            try {
+                PreparedStatement ps;
+                String sql = "DELETE FROM customers WHERE id = ?";
+                ps = con.prepareStatement(sql);
+                ps.setInt(1, id);             
+                if(ps.executeUpdate()!=0){
+                    con.close();
+                    return true;
+                }else{
+                    return false;
+                }               
+            } catch (SQLException erro) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
     
     public CustomerVO findById(int id) {
         PreparedStatement ps;
