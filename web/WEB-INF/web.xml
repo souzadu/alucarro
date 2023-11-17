@@ -8,6 +8,14 @@
         <servlet-name>CustomerController</servlet-name>
         <url-pattern>/CustomerController</url-pattern>
     </servlet-mapping>
+       <servlet>
+          <servlet-name>VehicleController</servlet-name>
+        <servlet-class>Controller.VehicleController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VehicleController</servlet-name>
+        <url-pattern>/VehicleController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

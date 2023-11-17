@@ -15,10 +15,10 @@
         </nav>
         <main class="main">
             <aside class="aside">
-                <form id="customers" name="customers" method="get" action="CustomerController">                    
+                <form id="customers" name="customers" method="get" action="CustomerController">  
                     <button type="submit" value="find-all" name="operation">Clientes</button>
                 </form>
-                <form name="vehicles" method="get" action="CustomerController">
+                <form  id="vehicles" name="vehicles" method="get" action="VehicleController">
                     <button type="submit" value="find-all" name="operation">Veículos</button>
                 </form>
                 <form name="rents" method="get" action="CustomerController">

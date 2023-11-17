@@ -6,38 +6,36 @@ DB: Classe da conexão com o banco de dados;
 JSP: View HTML;
 VO: Classe que é exibida para a View;
 
--------
+---
 
 - Ajustar design;
 
 3 TABELAS
+
 # customers
+
 id (int)
 name (varchar)
 cpf (varchar)
 phone (varchar)
 
 # vehicles
+
 id (int)
 make (varchar)
 model (varchar)
 plate (varchar)
 daily_rate (float)
 
-- Criar Controller, VO e DAO;
-- Criar tela de listagem;
-- Criar tela de cadastro;
-- Criar tela de alteração;
-- Criar exclusão;
-
 # rents
+
 id (int)
 initial_date (date)
 final_date (date)
 status (boolean - tinyint)
 id_cliente (int)
 id_veiculo (int)
-total_rate (daily rate * quantidade dias) (float)
+total_rate (daily rate \* quantidade dias) (float)
 card_owner (varchar)
 card_number (varchar)
 card_exp (varchar)
@@ -54,11 +52,11 @@ card_code (int)
 - Criar exclusão;
 
 - Formulário cadastrar aluguel:
-Carro
-Data Inicial
-Data Final
-CPF
-Titular do Cartão
-Número do Cartão
-Vencimento
-CVV
+  Carro
+  Data Inicial
+  Data Final
+  CPF
+  Titular do Cartão
+  Número do Cartão
+  Vencimento
+  CVV
