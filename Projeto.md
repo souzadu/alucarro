@@ -7,25 +7,58 @@ JSP: View HTML;
 VO: Classe que é exibida para a View;
 
 -------
+
+- Ajustar design;
+
 3 TABELAS
 # customers
-id
-name
-cpf
-phone
+id (int)
+name (varchar)
+cpf (varchar)
+phone (varchar)
 
 # vehicles
-id
-make
-model
-plate
-daily_rate
+id (int)
+make (varchar)
+model (varchar)
+plate (varchar)
+daily_rate (float)
+
+- Criar Controller, VO e DAO;
+- Criar tela de listagem;
+- Criar tela de cadastro;
+- Criar tela de alteração;
+- Criar exclusão;
 
 # rents
-id
-initial_date
-final_date
-status
-id_cliente
-id_veiculo
-total_rate (daily rate * quantidade dias)
+id (int)
+initial_date (date)
+final_date (date)
+status (boolean - tinyint)
+id_cliente (int)
+id_veiculo (int)
+total_rate (daily rate * quantidade dias) (float)
+card_owner (varchar)
+card_number (varchar)
+card_exp (varchar)
+card_code (int)
+
+- Vai pegar o id_cliente pelo cpf - Fazer busca pelo cpf na hora de salvar;
+- total_rate vai ser calculada na função antes de mandar pro banco;
+- Talvez seja o caso de digitar os valores nos campos, clicar em enviar, redirecionar p/ mesma tela porém com o nome do usuário e a taxa total, pra daí confirmar;
+
+- Criar Controller, VO e DAO;
+- Criar tela de listagem;
+- Criar tela de cadastro;
+- Criar tela de alteração;
+- Criar exclusão;
+
+- Formulário cadastrar aluguel:
+Carro
+Data Inicial
+Data Final
+CPF
+Titular do Cartão
+Número do Cartão
+Vencimento
+CVV
