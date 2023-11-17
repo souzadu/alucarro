@@ -28,7 +28,7 @@ CREATE TABLE `customers` (
   `cpf` varchar(14) NOT NULL,
   `phone` varchar(14) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1,'sdsadsad','312321','512512512');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,6 +56,10 @@ CREATE TABLE `rents` (
   `total_rate` float NOT NULL,
   `id_customer` int NOT NULL,
   `id_vehicle` int NOT NULL,
+  `card_owner` varchar(100) NOT NULL,
+  `card_number` varchar(16) NOT NULL,
+  `card_exp` varchar(5) NOT NULL,
+  `card_cvv` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `rents_FK` (`id_customer`),
   KEY `rents_FK_1` (`id_vehicle`),
@@ -111,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-05 18:33:58
+-- Dump completed on 2023-11-16 21:05:56
