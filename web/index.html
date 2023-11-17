@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
 <html>
     <head>
         <title>Clientes</title>
@@ -12,8 +8,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </head>
     <body>        
         <nav class="navbar">
-            <h1 class="navbar-logo">AluCarro</h1>
-            <form name="customers" method="get" action="CustomerController">
+            <h1 class="logo">AluCarro</h1>
+        </nav>
+        <aside class="aside">
+            <form id="customers" name="customers" method="get" action="CustomerController">
+                <input type="hidden" name="operation" value="find-all">
                 <button type="submit" value="find-all" name="operation">Clientes</button>
             </form>
             <form name="vehicles" method="get" action="CustomerController">
@@ -22,6 +21,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <form name="rents" method="get" action="CustomerController">
                 <button type="submit" value="find-all" name="operation">Aluguéis</button>
             </form>
-        </nav>
+        </aside> 
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById('customers').submit();
+            });
+        </script>
     </body>
 </html>
