@@ -4,17 +4,25 @@
         <servlet-name>CustomerController</servlet-name>
         <servlet-class>Controller.CustomerController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VehicleController</servlet-name>
+        <servlet-class>Controller.VehicleController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RentController</servlet-name>
+        <servlet-class>Controller.RentController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomerController</servlet-name>
         <url-pattern>/CustomerController</url-pattern>
     </servlet-mapping>
-       <servlet>
-          <servlet-name>VehicleController</servlet-name>
-        <servlet-class>Controller.VehicleController</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>VehicleController</servlet-name>
         <url-pattern>/VehicleController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RentController</servlet-name>
+        <url-pattern>/RentController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

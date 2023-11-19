@@ -21,7 +21,7 @@
                 <form name="vehicles" method="get" action="CustomerController">
                     <button type="submit" value="find-all" name="operation">Veículos</button>
                 </form>
-                <form name="rents" method="get" action="CustomerController">
+                <form name="rents" method="get" action="RentController">
                     <button type="submit" value="find-all" name="operation">Aluguéis</button>
                 </form>
             </aside>

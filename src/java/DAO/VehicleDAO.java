@@ -107,6 +107,7 @@ public class VehicleDAO {
                 vehicle.setMake(rs.getString("make"));
                 vehicle.setModel(rs.getString("model"));
                 vehicle.setPlate(rs.getString("plate"));
+                vehicle.setDailyRate(rs.getString("daily_rate"));
                 con.close();
                 return vehicle;
             } else {

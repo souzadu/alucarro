@@ -1,11 +1,11 @@
 <%@page import="java.util.List"%>
-<%@page import="VO.VehicleVO"%>
+<%@page import="VO.RentVO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Veículos</title>
+        <title>Aluguéis</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <link rel="stylesheet" href="main.css">
     </head>
@@ -27,34 +27,40 @@
             </aside> 
             <div class="main-content">
                 <div class="main-topbar">
-                    <button><a href="./create_vehicle.jsp">Cadastrar</a></button>
+                    <form name="create_rent" method="get" action="RentController">
+                        <button type="submit" value="create-step-one" name="operation">Cadastrar</a></button>
+                    </form>                    
                 </div>
                 <%
-                    List vehicles = (List) request.getAttribute("list");
+                    List rents = (List) request.getAttribute("list");
 
                     out.print("<table width=\"50%\" border=\"1\" cellspacing=\"0\">");
                     out.print("<tr>");
-                    out.print("<th>Marca</th>");
-                    out.print("<th>Modelo</th>");
-                    out.print("<th>Placa</th>");
-                    out.print("<th>Valor da diária</th>");
+                    out.print("<th>Cliente</th>");
+                    out.print("<th>Veículo</th>");
+                    out.print("<th>Data Inicial</th>");
+                    out.print("<th>Data Final</th>");
+                    out.print("<th>Status</th>");
+                    out.print("<th>Valor total</th>");
                     out.print("<th colspan='2'>Ações</th>");
                     out.print("</tr>");
 
-                    if (vehicles == null) {
+                    if (rents == null) {
                         out.print("<tr><td class='error' colspan='3'>Nenhum veículo encontrado</td></tr>");
                     }
 
-                    for (int cont = 0; cont < vehicles.size(); cont++) {
-                        VehicleVO vehicle = new VehicleVO();
-                        vehicle = (VehicleVO) vehicles.get(cont);
+                    for (int cont = 0; cont < rents.size(); cont++) {
+                        RentVO rent = new RentVO();
+                        rent = (RentVO) rents.get(cont);
                         out.print("<tr>");
-                        out.print("<td>" + vehicle.getMake() + "</td>");
-                        out.print("<td>" + vehicle.getModel() + "</td>");
-                        out.print("<td>" + vehicle.getPlate() + "</td>");
-                        out.print("<td>" + vehicle.getDailyRate() + "</td>");
-                        out.print("<td><a href=\"VehicleController?operation=find-by-id&id="+vehicle.getId()+"\">Alterar</a></td>");
-                        out.print("<td><a href=\"VehicleController?operation=delete&id="+vehicle.getId()+"\">Excluir</a></td>");
+                        out.print("<td>" + rent.getCustomerName() + "</td>");
+                        out.print("<td>" + rent.getCar() + "</td>");
+                        out.print("<td>" + rent.getInitialDate() + "</td>");
+                        out.print("<td>" + rent.getFinalDate() + "</td>");
+                        out.print("<td>" + RentVO.convertStatus(rent.isStatus()) + "</td>");
+                        out.print("<td>R$" + rent.getTotalRate() + "</td>");
+                        out.print("<td><a href=\"RentController?operation=find-by-id&id="+rent.getId()+"\">Alterar</a></td>");
+                        out.print("<td><a href=\"RentController?operation=delete&id="+rent.getId()+"\">Excluir</a></td>");
                         out.print("</tr>");
                     }
 
