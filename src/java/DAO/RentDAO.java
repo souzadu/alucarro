@@ -91,13 +91,13 @@ public class RentDAO {
         }
     }
     
-    /*
+    
     public boolean delete(int id){
         Connection con = new Database().connect();
         if (con != null) {
             try {
                 PreparedStatement ps;
-                String sql = "DELETE FROM customers WHERE id = ?";
+                String sql = "DELETE FROM rents WHERE id = ?";
                 ps = con.prepareStatement(sql);
                 ps.setInt(1, id);             
                 if(ps.executeUpdate()!=0){
@@ -113,7 +113,7 @@ public class RentDAO {
             return false;
         }
     }
-    
+    /*
     public CustomerVO findById(int id) {
         PreparedStatement ps;
         ResultSet rs;
