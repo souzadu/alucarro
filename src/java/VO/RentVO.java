@@ -6,8 +6,10 @@ public class RentVO {
     private int id;
     private String car;
     private String carPlate;
+    private int idVehicle;
     private String customerName;
     private String customerCpf;
+    private int idCustomer;    
     private Date initialDate;
     private Date finalDate;
     private boolean status;
@@ -40,6 +42,14 @@ public class RentVO {
     public void setCarPlate(String carPlate) {
         this.carPlate = carPlate;
     }
+    
+    public int getIdVehicle() {
+        return idVehicle;
+    }
+
+    public void setIdVehicle(int idVehicle) {
+        this.idVehicle = idVehicle;
+    }
 
     public String getCustomerName() {
         return customerName;
@@ -55,6 +65,14 @@ public class RentVO {
 
     public void setCustomerCpf(String customerCpf) {
         this.customerCpf = customerCpf;
+    }
+    
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     public Date getInitialDate() {

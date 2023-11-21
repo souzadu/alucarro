@@ -113,8 +113,8 @@ public class RentDAO {
             return false;
         }
     }
-    /*
-    public CustomerVO findById(int id) {
+    
+    public RentVO findById(int id) {
         PreparedStatement ps;
         ResultSet rs;
         Connection con;
@@ -122,18 +122,42 @@ public class RentDAO {
         try {
             con = new Database().connect();
             if (con != null) {
-                String sql = "SELECT id, name, cpf, phone FROM customers WHERE id = ?";
+                String sql = "SELECT id, initial_date, final_date, status, total_rate, id_customer, id_vehicle FROM rents WHERE id = ?";
                 ps = con.prepareStatement(sql);
                 ps.setInt(1, id);
                 rs = ps.executeQuery();
-                rs.next();                
-                CustomerVO customer = new CustomerVO();
-                customer.setId(rs.getInt("id"));
-                customer.setName(rs.getString("name"));
-                customer.setCpf(rs.getString("cpf"));
-                customer.setPhone(rs.getString("phone"));
+                rs.next();
+                
+                String customer_sql = "SELECT name, cpf FROM customers WHERE id=?";
+                PreparedStatement cPs;
+                ResultSet cRs;
+                cPs = con.prepareStatement(customer_sql);
+                cPs.setInt(1, rs.getInt("id_customer"));
+                cRs = cPs.executeQuery();
+                cRs.next();
+
+                String vehicle_sql = "SELECT make, model, plate, daily_rate FROM vehicles WHERE id=?";
+                PreparedStatement vPs;
+                ResultSet vRs;
+                vPs = con.prepareStatement(vehicle_sql);
+                vPs.setInt(1, rs.getInt("id_vehicle"));
+                vRs = vPs.executeQuery();
+                vRs.next();
+                
+                RentVO rent = new RentVO();
+                rent.setId(rs.getInt("id"));
+                rent.setCar(vRs.getString("make") + " " + vRs.getString("model") + " - " + vRs.getString("plate") + " - R$" + vRs.getFloat("daily_rate"));
+                rent.setIdVehicle(rs.getInt("id_vehicle"));
+                rent.setIdCustomer(rs.getInt("id_customer"));
+                rent.setCustomerName(cRs.getString("name"));
+                rent.setCustomerCpf(cRs.getString("cpf"));
+                rent.setInitialDate(rs.getDate("initial_date"));
+                rent.setFinalDate(rs.getDate("final_date"));
+                rent.setStatus(rs.getBoolean("status"));
+                rent.setTotalRate(rs.getFloat("total_rate"));
+
                 con.close();
-                return customer;
+                return rent;
             } else {
                 return null;
             }
@@ -142,7 +166,7 @@ public class RentDAO {
             return null;
         }
     }
-    
+    /*
     public boolean update(CustomerVO customer) {
         Connection con = new Database().connect();
         if (con != null) {

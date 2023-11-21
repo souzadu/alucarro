@@ -78,13 +78,14 @@ public class RentController extends HttpServlet {
                     dao.create(newRent);
                     response.sendRedirect("RentController?operation=find-all");
                     break;
-                /*case "find-by-id":
+                case "update-step-one":
                     int id = Integer.parseInt(request.getParameter("id"));
-                    request.setAttribute("vehicle", dao.findById(id));
-                    RequestDispatcher r = request.getRequestDispatcher("/update_vehicle.jsp");
+                    request.setAttribute("rent", dao.findById(id));
+                    request.setAttribute("vehicles", vDAO.findAll());
+                    RequestDispatcher r = request.getRequestDispatcher("/update_rent_step_one.jsp");
                     r.forward(request, response);  
                     break;
-                case "update":
+                /*case "update":
                     id = Integer.parseInt(request.getParameter("id"));
                     make = request.getParameter("make");
                     model = request.getParameter("model");
@@ -99,8 +100,8 @@ public class RentController extends HttpServlet {
                     dao.update(updatedVehicle);
                     response.sendRedirect("VehicleController?operation=find-all");
                     break;*/
-                case "delete": 
-                    int id = Integer.parseInt(request.getParameter("id"));
+                case "delete":
+                    id = Integer.parseInt(request.getParameter("id"));
                     dao.delete(id);
                     response.sendRedirect("RentController?operation=find-all");
                     break;

@@ -59,7 +59,7 @@
                         out.print("<td>" + rent.getFinalDate() + "</td>");
                         out.print("<td>" + RentVO.convertStatus(rent.isStatus()) + "</td>");
                         out.print("<td>R$" + rent.getTotalRate() + "</td>");
-                        out.print("<td><a href=\"RentController?operation=find-by-id&id="+rent.getId()+"\">Alterar</a></td>");
+                        out.print("<td><a href=\"RentController?operation=update-step-one&id="+rent.getId()+"\">Alterar</a></td>");
                         out.print("<td><a href=\"RentController?operation=delete&id="+rent.getId()+"\">Excluir</a></td>");
                         out.print("</tr>");
                     }
