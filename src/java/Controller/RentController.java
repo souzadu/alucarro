@@ -7,6 +7,7 @@ import DAO.RentDAO;
 import DAO.VehicleDAO;
 import VO.CustomerVO;
 import VO.RentCreateVO;
+import VO.RentUpdateVO;
 import VO.RentVO;
 import VO.VehicleVO;
 import jakarta.servlet.RequestDispatcher;
@@ -83,23 +84,55 @@ public class RentController extends HttpServlet {
                     request.setAttribute("rent", dao.findById(id));
                     request.setAttribute("vehicles", vDAO.findAll());
                     RequestDispatcher r = request.getRequestDispatcher("/update_rent_step_one.jsp");
-                    r.forward(request, response);  
+                    r.forward(request, response);
                     break;
-                /*case "update":
-                    id = Integer.parseInt(request.getParameter("id"));
-                    make = request.getParameter("make");
-                    model = request.getParameter("model");
-                    plate = request.getParameter("plate");
-                    daily_rate = request.getParameter("daily_rate");
-                    VehicleVO updatedVehicle = new VehicleVO();
-                    updatedVehicle.setId(id);
-                    updatedVehicle.setMake(make);
-                    updatedVehicle.setModel(model);
-                    updatedVehicle.setPlate(plate);
-                    updatedVehicle.setDailyRate(daily_rate);
-                    dao.update(updatedVehicle);
-                    response.sendRedirect("VehicleController?operation=find-all");
-                    break;*/
+                case "update-step-two":
+                    id = Integer.parseInt(request.getParameter("rent_id"));
+                    vehicleId = request.getParameter("vehicle");
+                    initialDateStr = request.getParameter("initial_date");
+                    finalDateStr = request.getParameter("final_date");
+                    cpf = request.getParameter("cpf");
+                    RentVO rent = dao.findById(id);
+                    vehicle = vDAO.findById(Integer.parseInt(vehicleId));
+                    customer = cDAO.findByCPF(cpf);
+                    
+                    initialDate = LocalDate.parse(initialDateStr);
+                    finalDate = LocalDate.parse(finalDateStr);
+                    numOfDays = ChronoUnit.DAYS.between(initialDate, finalDate) + 1;
+                    totalRate = vehicle.getDailyRate() * numOfDays;
+                    
+                    request.setAttribute("rent", rent);
+                    request.setAttribute("vehicle", vehicle);
+                    request.setAttribute("initial_date", initialDateStr);
+                    request.setAttribute("final_date", finalDateStr);
+                    request.setAttribute("total_rate", totalRate);
+                    request.setAttribute("cpf", cpf);
+                    request.setAttribute("customer", customer);
+                    rdTwo = request.getRequestDispatcher("/update_rent_step_two.jsp");
+                    rdTwo.forward(request, response);
+                    break;
+                case "update":
+                    initialDStr = request.getParameter("initial_date");
+                    finalDStr = request.getParameter("final_date");
+                    initDt = LocalDate.parse(initialDStr);
+                    finDt = LocalDate.parse(finalDStr);
+                    id = Integer.parseInt(request.getParameter("rent_id"));
+                    
+                    RentUpdateVO updatedRent = new RentUpdateVO();
+                    updatedRent.setId(id);
+                    updatedRent.setInitialDate(initDt);
+                    updatedRent.setFinalDate(finDt);
+                    updatedRent.setTotalRate(Float.parseFloat(request.getParameter("total_rate").replaceAll("[^\\d.]", "")));
+                    updatedRent.setIdCustomer(Integer.parseInt(request.getParameter("customer_id")));
+                    updatedRent.setIdVehicle(Integer.parseInt(request.getParameter("vehicle")));
+                    updatedRent.setCardOwner(request.getParameter("card_owner"));
+                    updatedRent.setCardNumber(request.getParameter("card_number"));
+                    updatedRent.setCardExp(request.getParameter("card_exp"));
+                    updatedRent.setCardCvv(Integer.parseInt(request.getParameter("card_cvv")));
+
+                    dao.update(updatedRent);
+                    response.sendRedirect("RentController?operation=find-all");
+                    break;
                 case "delete":
                     id = Integer.parseInt(request.getParameter("id"));
                     dao.delete(id);

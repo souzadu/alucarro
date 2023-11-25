@@ -2,6 +2,7 @@ package DAO;
 
 import Database.Database;
 import VO.RentCreateVO;
+import VO.RentUpdateVO;
 import VO.RentVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -122,7 +123,7 @@ public class RentDAO {
         try {
             con = new Database().connect();
             if (con != null) {
-                String sql = "SELECT id, initial_date, final_date, status, total_rate, id_customer, id_vehicle FROM rents WHERE id = ?";
+                String sql = "SELECT id, initial_date, final_date, status, total_rate, id_customer, id_vehicle, card_owner, card_number, card_exp, card_cvv FROM rents WHERE id = ?";
                 ps = con.prepareStatement(sql);
                 ps.setInt(1, id);
                 rs = ps.executeQuery();
@@ -155,6 +156,10 @@ public class RentDAO {
                 rent.setFinalDate(rs.getDate("final_date"));
                 rent.setStatus(rs.getBoolean("status"));
                 rent.setTotalRate(rs.getFloat("total_rate"));
+                rent.setCardOwner(rs.getString("card_owner"));
+                rent.setCardNumber(rs.getString("card_number"));
+                rent.setCardExp(rs.getString("card_exp"));
+                rent.setCardCvv(rs.getString("card_cvv"));
 
                 con.close();
                 return rent;
@@ -165,19 +170,25 @@ public class RentDAO {
             System.err.print("Exceção gerada ao tentar buscar os dados para alteração: " + erro.getMessage());
             return null;
         }
-    }
-    /*
-    public boolean update(CustomerVO customer) {
+    }    
+    public boolean update(RentUpdateVO rent) {
         Connection con = new Database().connect();
         if (con != null) {
             try {                
                 PreparedStatement ps;
-                String sql = "UPDATE customers SET name=?, cpf=?, phone=? WHERE id=?";
+                String sql = "UPDATE rents SET initial_date=?, final_date=?, status=?, total_rate=?, id_customer=?, id_vehicle=?, card_owner=?, card_number=?, card_exp=?, card_cvv=? WHERE id=?";
                 ps = con.prepareStatement(sql);
-                ps.setString(1, customer.getName());
-                ps.setString(2, customer.getCpf());
-                ps.setString(3, customer.getPhone());                
-                ps.setInt(4, customer.getId());                
+                ps.setDate(1, java.sql.Date.valueOf(rent.getInitialDate()));
+                ps.setDate(2, java.sql.Date.valueOf(rent.getFinalDate()));
+                ps.setBoolean(3, false);
+                ps.setFloat(4, rent.getTotalRate());
+                ps.setInt(5, rent.getIdCustomer());
+                ps.setInt(6, rent.getIdVehicle());
+                ps.setString(7, rent.getCardOwner());
+                ps.setString(8, rent.getCardNumber());
+                ps.setString(9, rent.getCardExp());              
+                ps.setInt(10, rent.getCardCvv());
+                ps.setInt(11, rent.getId());
                 if (ps.executeUpdate() != 0) {
                     System.out.println("execute");
                     con.close();
@@ -193,5 +204,5 @@ public class RentDAO {
         } else {
             return false;
         }
-    }*/
+    }
 }

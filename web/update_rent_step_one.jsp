@@ -31,9 +31,10 @@
                 <form class="form" name="create" method="post" action="RentController">
                     <label for="vehicle">Carro</label>                    
                     <%
-                        out.print("<select name='vehicle' id='vehicle'>");
                         List vehicles = (List) request.getAttribute("vehicles");
                         RentVO rent = (RentVO) request.getAttribute("rent");
+                        out.print("<input type='hidden' name='rent_id' value='"+rent.getId()+"'>");
+                        out.print("<select name='vehicle' id='vehicle'>");
                         if (vehicles != null && !vehicles.isEmpty()) {
                             for (int cont = 0; cont < vehicles.size(); cont++) {
                                 VehicleVO vehicle = new VehicleVO();
