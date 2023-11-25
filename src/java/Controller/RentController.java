@@ -122,6 +122,7 @@ public class RentController extends HttpServlet {
                     updatedRent.setId(id);
                     updatedRent.setInitialDate(initDt);
                     updatedRent.setFinalDate(finDt);
+                    updatedRent.setStatus(Boolean.parseBoolean(request.getParameter("status")));
                     updatedRent.setTotalRate(Float.parseFloat(request.getParameter("total_rate").replaceAll("[^\\d.]", "")));
                     updatedRent.setIdCustomer(Integer.parseInt(request.getParameter("customer_id")));
                     updatedRent.setIdVehicle(Integer.parseInt(request.getParameter("vehicle")));

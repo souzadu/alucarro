@@ -69,6 +69,15 @@
                     out.print("<input id='card_exp' name='card_exp' value='"+rent.getCardExp()+"'>");
                     out.print("<label for='card_cvv'>CVV do Cartão</label>");
                     out.print("<input id='card_cvv' name='card_cvv' value='"+rent.getCardCvv()+"'>");
+                    out.print("<label for='status'>Status</label>");
+                    out.print("<select name='status' id='status'>");                    
+                    out.print("<option value='false' " + (rent.isStatus() ? "selected" : "") + ">");
+                    out.print("Pendente");
+                    out.print("</option>");
+                    out.print("<option value='true' " + (rent.isStatus() ? "selected" : "") + ">");
+                    out.print("Finalizado");
+                    out.print("</option>");                    
+                    out.print("</select>");                    
                      %>
                     <button type="submit" value="update" name="operation">Próximo</button>
                 </form>

@@ -180,7 +180,7 @@ public class RentDAO {
                 ps = con.prepareStatement(sql);
                 ps.setDate(1, java.sql.Date.valueOf(rent.getInitialDate()));
                 ps.setDate(2, java.sql.Date.valueOf(rent.getFinalDate()));
-                ps.setBoolean(3, false);
+                ps.setBoolean(3, rent.isStatus());
                 ps.setFloat(4, rent.getTotalRate());
                 ps.setInt(5, rent.getIdCustomer());
                 ps.setInt(6, rent.getIdVehicle());
