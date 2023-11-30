@@ -20,13 +20,13 @@
         <main class="main">
             <aside class="aside">
                 <form id="customers" name="customers" method="get" action="CustomerController">                    
-                    <button type="submit" value="find-all" name="operation">Clientes</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Clientes</button>
                 </form>
                 <form name="vehicles" method="get" action="CustomerController">
-                    <button type="submit" value="find-all" name="operation">Veículos</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Veículos</button>
                 </form>
                 <form name="rents" method="get" action="RentController">
-                    <button type="submit" value="find-all" name="operation">Aluguéis</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Aluguéis</button>
                 </form>
             </aside>
             <div class="main-content">
@@ -39,7 +39,7 @@
                     <input id="cpf" name="cpf" value="<%=customer.getCpf()%>">
                     <label id="phone">Celular</label>
                     <input id="phone" name="phone" value="<%=customer.getPhone()%>">
-                    <button type="submit" value="update" name="operation">Alterar</button>
+                    <button class="myButton__alterar" type="submit" value="update" name="operation">Alterar</button>
                 </form>
             </div>            
         </main>

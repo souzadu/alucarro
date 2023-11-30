@@ -20,13 +20,13 @@
         <main class="main">
             <aside class="aside">
                 <form id="customers" name="customers" method="get" action="CustomerController">                    
-                    <button type="submit" value="find-all" name="operation">Clientes</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Clientes</button>
                 </form>
                 <form name="vehicles" method="get" action="VehicleController">
-                    <button type="submit" value="find-all" name="operation">Veículos</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Veículos</button>
                 </form>
                 <form name="rents" method="get" action="RentController">
-                    <button type="submit" value="find-all" name="operation">Aluguéis</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Aluguéis</button>
                 </form>
             </aside>
             <div class="main-content">
@@ -35,13 +35,13 @@
                     <input type="hidden" name="id" value="<%=vehicle.getId()%>">
                     <label for="make">Marca</label>
                     <input id="make" name="make" value="<%=vehicle.getMake()%>">
-                    <label for="model">Model</label>
+                    <label for="model">Modelo</label>
                     <input id="model" name="model" value="<%=vehicle.getModel()%>">
                     <label id="plate">Placa</label>
                     <input id="plate" name="plate" value="<%=vehicle.getPlate()%>">
                     <label id="daily_rate">Valor da diária</label>
                     <input id="daily_rate" name="daily_rate" value="<%=vehicle.getDailyRate()%>">
-                    <button type="submit" value="update" name="operation">Alterar</button>
+                    <button class="myButton__alterar" type="submit" value="update" name="operation">Alterar</button>
                 </form>
             </div>            
         </main>

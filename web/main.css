@@ -27,6 +27,7 @@ body, button {
     height: calc(100vh - 8rem);
     padding-top: 2rem;
     width: 10rem;
+    border-top-right-radius: 20px;
 }
 
 .logo {
@@ -40,11 +41,11 @@ body, button {
 
 .main-topbar {
     text-align: right;
-    width: 50%;
+    
 }
 
 .main-topbar a {
-    color: black;
+    color: WHITE;
     text-decoration: none;
 }
 
@@ -68,3 +69,114 @@ body, button {
     color: red;
     text-align: center;
 }
+
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+	border-radius:3px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.myButton__excluir {
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	background-color:#d0451b;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+}
+.myButton__excluir:hover {
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	background-color:#bc3315;
+}
+.myButton__excluir:active {
+	position:relative;
+	top:1px;
+}
+
+.myButton__alterar {
+	box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+	background-color:#ffc477;
+	border-radius:6px;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #cc9f52;
+}
+.myButton__alterar:hover {
+	background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+	background-color:#fb9e25;
+}
+.myButton__alterar:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+.tabela {
+    border-collapse: collapse;
+}
+
+.tabela__header {
+    text-align: left;
+    border-bottom: 2px solid #000; /* Borda inferior para criar a linha */
+    padding: 10px;
+    
+}
+
+.tabela__header__acoes {
+    text-align: center;
+    border-bottom: 2px solid #000; 
+    padding: 10px;
+    
+}
+
+  .tabela__header {
+    background-color: white; /* Cor de fundo para o cabeçalho (linha 1) */
+    
+  }
+
+  .tabela__linha-par {
+    background-color: #f0f0f0; /* Cor de fundo para linhas pares */
+    padding: 50px; 
+  }
+
+  .tabela__linha-impar {
+    background-color: white; /* Cor de fundo para linhas ímpares */
+    padding: 50px;
+  }
+ 
+        

@@ -16,13 +16,13 @@
         <main class="main">
             <aside class="aside">
                 <form id="customers" name="customers" method="get" action="CustomerController">                    
-                    <button type="submit" value="find-all" name="operation">Clientes</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Clientes</button>
                 </form>
                 <form name="vehicles" method="get" action="CustomerController">
-                    <button type="submit" value="find-all" name="operation">Veículos</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Veículos</button>
                 </form>
                 <form name="rents" method="get" action="RentController">
-                    <button type="submit" value="find-all" name="operation">Aluguéis</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Aluguéis</button>
                 </form>
             </aside>
             <div class="main-content">
@@ -34,7 +34,7 @@
                     <input id="cpf" name="cpf">
                     <label id="phone">Celular</label>
                     <input id="phone" name="phone">
-                    <button type="submit" value="create" name="operation">Cadastrar</button>
+                    <button class="myButton" type="submit" value="create" name="operation">Cadastrar</button>
                 </form>
             </div>
         </main>

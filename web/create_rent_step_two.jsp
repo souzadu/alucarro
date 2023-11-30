@@ -18,13 +18,13 @@
         <main class="main">
             <aside class="aside">
                 <form id="customers" name="customers" method="get" action="CustomerController">                    
-                    <button type="submit" value="find-all" name="operation">Clientes</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Clientes</button>
                 </form>
                 <form name="vehicles" method="get" action="VehicleController">
-                    <button type="submit" value="find-all" name="operation">Veículos</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Veículos</button>
                 </form>
                 <form name="rents" method="get" action="RentController">
-                    <button type="submit" value="find-all" name="operation">Aluguéis</button>
+                    <button class="myButton" type="submit" value="find-all" name="operation">Aluguéis</button>
                 </form>
             </aside>
             <div class="main-content">
@@ -68,7 +68,7 @@
                      <input id="card_exp" name="card_exp">
                      <label for="card_cvv">CVV do Cartão</label>
                      <input id="card_cvv" name="card_cvv">
-                    <button type="submit" value="create" name="operation">Finalizar</button>
+                    <button class="myButton" type="submit" value="create" name="operation">Finalizar</button>
                 </form>
             </div>
         </main>
